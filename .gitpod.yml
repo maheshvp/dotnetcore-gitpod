@@ -3,7 +3,4 @@ image:
 
 tasks:
   - command : dotnet run
-  
-ports:
-  - port: 5000
-    onOpen: open-preview
+  - command: gp await-port 5000 && gp preview $(gp url 5000)
