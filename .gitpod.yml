@@ -1,12 +1,13 @@
 image:
   file: Dockerfile
 
+tasks:
+  - command: dotnet run --urls http://0.0.0.0:5001
+
 ports:
   - port: 5000
     onOpen: ignore
   - port: 5001
     onOpen: open-preview
 
-tasks:
-  - command: dotnet run --urls http://0.0.0.0:5001
   
