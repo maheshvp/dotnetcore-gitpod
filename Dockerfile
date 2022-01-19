@@ -23,7 +23,7 @@ ENV PGDATABASE="postgres"
 RUN printf "\n# Auto-start PostgreSQL server.\n[[ \$(pg_ctl status | grep PID) ]] || pg_start > /dev/null\n" >> ~/.bashrc
 
 COPY --chown=gitpod:gitpod setup_postgres.sql /tmp/
-psql -h localhost -d postgres --file=/tmp/setup_postgres.sql
+RUN psql -h localhost -d postgres --file=/tmp/setup_postgres.sql
 
 # Give back control
 USER root
