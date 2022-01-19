@@ -2,7 +2,7 @@ image:
   file: Dockerfile
 
 tasks:
-  - command: psql postgres && \c some_database && \i .\setup_postgres.sql && dotnet run --urls http://0.0.0.0:5001
+  - command: psql postgres && \c postgres && \i .\setup_postgres.sql && dotnet run --urls http://0.0.0.0:5001
 
 ports:
   - port: 5000
