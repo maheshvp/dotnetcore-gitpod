@@ -6,5 +6,8 @@ ports:
     onOpen: ignore
   - port: 5001
     onOpen: open-preview
+    
+tasks:
+  init: psql -h localhost -d postgres --file=setup_postgres.sql
 
   
