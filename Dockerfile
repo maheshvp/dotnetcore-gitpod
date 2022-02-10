@@ -2,7 +2,9 @@ FROM gitpod/workspace-dotnet-vnc:latest
 
 USER gitpod
 
-COPY ./setup_postgres.sql /docker-entrypoint-initdb.d/
+//COPY ./setup_postgres.sql /docker-entrypoint-initdb.d/
+
+COPY --chown=gitpod:gitpod setup_postgres.sql /tmp/
 
 # Install PostgreSQL
 RUN sudo apt-get update \
@@ -23,3 +25,6 @@ ENV PGHOSTADDR="127.0.0.1"
 ENV PGDATABASE="postgres"
 
 RUN printf "\n# Auto-start PostgreSQL server.\n[[ \$(pg_ctl status | grep PID) ]] || pg_start > /dev/null\n" >> ~/.bashrc
+
+//RUN pg_start && psql -h localhost -d postgres --file=/tmp/setup_postgres.sql && pg_stop
+RUN psql -h localhost -d postgres --file=/tmp/setup_postgres.sql
