@@ -8,6 +8,4 @@ ports:
     onOpen: open-preview
     
 tasks:
-  -init: psql -h localhost -d postgres --file=setup_postgres.sql
-
-  
+  init: psql -h localhost -d postgres --file=setup_postgres.sql
