@@ -2,8 +2,6 @@ FROM gitpod/workspace-dotnet-vnc:latest
 
 USER gitpod
 
-COPY ./setup_postgres.sql /tmp/
-
 # Install PostgreSQL
 RUN sudo apt-get update \
  && sudo apt-get install -y postgresql-12 postgresql-contrib-12 \
@@ -21,7 +19,5 @@ ENV PATH="$PATH:$HOME/.pg_ctl/bin"
 ENV DATABASE_URL="postgresql://gitpod@localhost"
 ENV PGHOSTADDR="127.0.0.1"
 ENV PGDATABASE="postgres"
-
-RUN pg_start && psql -h localhost -d postgres --file=/tmp/setup_postgres.sql && pg_stop
 
 RUN printf "\n# Auto-start PostgreSQL server.\n[[ \$(pg_ctl status | grep PID) ]] || pg_start > /dev/null\n" >> ~/.bashrc
