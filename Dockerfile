@@ -25,5 +25,3 @@ ENV PGDATABASE="postgres"
 RUN pg_start && psql -h localhost -d postgres --file=/tmp/setup_postgres.sql && pg_stop
 
 RUN printf "\n# Auto-start PostgreSQL server.\n[[ \$(pg_ctl status | grep PID) ]] || pg_start > /dev/null\n" >> ~/.bashrc
-
-//RUN psql -h localhost -d postgres --file=/tmp/setup_postgres.sql
