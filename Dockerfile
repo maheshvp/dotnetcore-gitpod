@@ -1,5 +1,7 @@
 FROM gitpod/workspace-dotnet-vnc:latest
 
+ENV TRIGGER_REBUILD 1
+
 COPY --chown=gitpod:gitpod setup_postgres.sql /tmp/
 
 USER gitpod
