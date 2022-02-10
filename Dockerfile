@@ -1,10 +1,10 @@
 FROM gitpod/workspace-dotnet-vnc:latest
 
+COPY --chown=gitpod:gitpod setup_postgres.sql /tmp/
+
 USER gitpod
 
 //COPY ./setup_postgres.sql /docker-entrypoint-initdb.d/
-
-COPY --chown=gitpod:gitpod setup_postgres.sql /tmp/
 
 # Install PostgreSQL
 RUN sudo apt-get update \
