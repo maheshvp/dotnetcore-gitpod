@@ -2,6 +2,9 @@ FROM gitpod/workspace-dotnet-vnc:latest
 
 USER gitpod
 
+ENV DOTNET_ROOT=/tmp/dotnet
+ENV PATH=$PATH:/tmp/dotnet 
+
 # Install PostgreSQL
 RUN sudo apt-get update \
  && sudo apt-get install -y postgresql-12 postgresql-contrib-12 \

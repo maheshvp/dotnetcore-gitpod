@@ -9,3 +9,9 @@ ports:
     
 tasks:
   - init: psql -h localhost -d postgres --file=setup_postgres.sql
+
+  - name: Postinstall .NET 6.0 and dev certificates
+    init: |
+      mkdir -p /tmp/dotnet && curl -fsSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --channel 6.0 --install-dir /tmp/dotnet 
+      dotnet dev-certs https 
+      dotnet restore
